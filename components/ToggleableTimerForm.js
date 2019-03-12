@@ -1,12 +1,16 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-
+import PropTypes from "prop-types";
 import TimerButton from "./TimerButton";
 import TimerForm from "./TimerForm";
 
 export default class ToggleableTimerForm extends React.Component {
   state = {
     isOpen: false
+  };
+
+  static propTypes = {
+    onFormSubmit: PropTypes.func.isRequired
   };
 
   handleFormOpen = () => {
@@ -24,6 +28,7 @@ export default class ToggleableTimerForm extends React.Component {
   };
 
   render() {
+    const { isOpen } = this.state;
     return (
       <View style={[styles.container, !isOpen && styles.buttonPadding]}>
         {isOpen ? (
